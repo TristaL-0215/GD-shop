@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>未来科技商城</title>
+  <!-- 社交媒体分享meta标签 -->
+  <meta name="description" content="探索最新科技产品，体验未来生活方式">
+  <meta property="og:title" content="未来科技商城">
+  <meta property="og:description" content="探索最新科技产品，体验未来生活方式">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:8000">
+  <meta property="og:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=futuristic%20tech%20store%20with%20orange%20accent%20colors&image_size=square_hd">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="未来科技商城">
+  <meta name="twitter:description" content="探索最新科技产品，体验未来生活方式">
+  <meta name="twitter:image" content="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=futuristic%20tech%20store%20with%20orange%20accent%20colors&image_size=square_hd">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* 头部样式 */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 15px 0;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f97316;
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: #f8fafc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #f97316;
+    }
+    
+    /* 英雄区域 */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+      }
+      to {
+        text-shadow: 0 0 30px rgba(249, 115, 22, 0.8), 0 0 40px rgba(251, 146, 60, 0.5);
+      }
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #94a3b8;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #f97316, #fb923c);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+    }
+    
+    /* 背景效果 */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #f97316;
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-50px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+    
+    /* 商品展示区域 */
+    .products {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      background: linear-gradient(45deg, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .product-card {
+      background: rgba(30, 41, 59, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 6s linear infinite;
+    }
+    
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) rotate(45deg);
+      }
+      100% {
+        transform: translateX(100%) rotate(45deg);
+      }
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+      border-color: #f97316;
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(45deg, #1e293b, #334155);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #f97316;
+    }
+    
+    .product-info {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+    
+    .product-description {
+      color: #94a3b8;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+    
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f97316;
+      margin-bottom: 20px;
+    }
+    
+    .view-details {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(45deg, #f97316, #fb923c);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      margin-top: 15px;
+    }
+    
+    .view-details:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+    }
+    
+    /* 购物车区域 */
+    .cart {
+      display: none;
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 300px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      z-index: 999;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .cart-title {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #06b6d4;
+    }
+    
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    
+    .cart-item-name {
+      font-size: 0.9rem;
+      color: #f8fafc;
+    }
+    
+    .cart-item-price {
+      font-size: 0.9rem;
+      color: #06b6d4;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    
+    .checkout-button {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(45deg, #10b981, #059669);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .checkout-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+    }
+    
+    /* 模态框样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .modal-content {
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 600px;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      box-shadow: 0 0 50px rgba(249, 115, 22, 0.2);
+      animation: slideIn 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 6s linear infinite;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .modal-header h2 {
+      color: #f97316;
+      font-size: 1.8rem;
+    }
+    
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #f8fafc;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .close-button:hover {
+      color: #f97316;
+    }
+    
+    .modal-body {
+      display: flex;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .modal-image {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #1e293b, #334155);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #f97316;
+      flex-shrink: 0;
+    }
+    
+    .modal-info {
+      flex: 1;
+    }
+    
+    .modal-description {
+      color: #94a3b8;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    
+    .modal-price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #f97316;
+      margin-bottom: 30px;
+    }
+    
+
+    
+    /* 分享区域样式 */
+    .share-section {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(249, 115, 22, 0.2);
+      padding: 60px 0;
+      margin-top: 100px;
+    }
+    
+    .share-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #f97316;
+    }
+    
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .share-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: 15px;
+      color: #f8fafc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+    }
+    
+    .share-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+      border-color: #f97316;
+    }
+    
+    .share-icon {
+      font-size: 2rem;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .cart {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+      }
+      
+      .modal-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .modal-image {
+        width: 150px;
+        height: 150px;
+        font-size: 3rem;
+      }
+      
+      .share-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .share-button {
+        width: 80%;
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 头部导航 -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">未来科技</div>
+        <ul class="nav-links">
+          <li><a href="#">首页</a></li>
+          <li><a href="#products">商品</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>未来科技商城</h1>
+        <p>探索最新科技产品，体验未来生活方式</p>
+        <a href="#products" class="cta-button">立即探索</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商品展示区域 -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2 class="section-title">热门商品</h2>
+      <div class="products-grid" id="products-grid">
+        <!-- 商品卡片将通过JavaScript动态生成 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 购物车 -->
+  <div class="cart" id="cart">
+    <h3 class="cart-title">购物车</h3>
+    <div class="cart-items" id="cart-items">
+      <!-- 购物车商品将通过JavaScript动态生成 -->
+    </div>
+    <div class="cart-total" id="cart-total">
+      <span>总计:</span>
+      <span>¥0.00</span>
+    </div>
+    <button class="checkout-button" id="checkout-button">结算</button>
+  </div>
+  
+  <!-- 商品详情模态框 -->
+  <div class="modal" id="product-modal">
+    <div class="modal-content" id="modal-content">
+      <!-- 模态框内容将通过JavaScript动态生成 -->
+    </div>
+  </div>
+  
+  <!-- 分享区域 -->
+  <footer class="share-section">
+    <div class="container">
+      <h3 class="share-title">分享给好友</h3>
+      <div class="share-buttons">
+        <button class="share-button wechat" onclick="shareToWeChat()">
+          <span class="share-icon">💬</span>
+          <span>微信</span>
+        </button>
+        <button class="share-button weibo" onclick="shareToWeibo()">
+          <span class="share-icon">📱</span>
+          <span>微博</span>
+        </button>
+        <button class="share-button copy" onclick="copyLink()">
+          <span class="share-icon">🔗</span>
+          <span>复制链接</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 生成粒子背景
+    function createParticles() {
+      const heroBg = document.getElementById('hero-bg');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        heroBg.appendChild(particle);
+      }
+    }
+
+    // 商品数据
+    const products = [
+      {
+        id: 1,
+        name: '智能手表 Pro',
+        description: '搭载最新AI芯片，支持健康监测和智能助手',
+        price: 1999,
+        icon: '⌚'
+      },
+      {
+        id: 2,
+        name: '无线耳机',
+        description: '主动降噪，续航30小时，高清音质',
+        price: 999,
+        icon: '🎧'
+      },
+      {
+        id: 3,
+        name: '智能音箱',
+        description: '360°环绕音效，支持多种语音助手',
+        price: 1299,
+        icon: '🔊'
+      },
+      {
+        id: 4,
+        name: '智能家居套装',
+        description: '一键控制家中所有智能设备',
+        price: 2999,
+        icon: '🏠'
+      },
+      {
+        id: 5,
+        name: 'AR眼镜',
+        description: '沉浸式增强现实体验，支持多种应用',
+        price: 3999,
+        icon: '🥽'
+      },
+      {
+        id: 6,
+        name: '智能健身手环',
+        description: '实时监测运动数据，科学指导健身',
+        price: 599,
+        icon: '💪'
+      }
+    ];
+
+    // 渲染商品列表
+    function renderProducts() {
+      const productsGrid = document.getElementById('products-grid');
+      productsGrid.innerHTML = '';
+      
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.onclick = function() {
+          openProductDetail(product.id);
+        };
+        productCard.innerHTML = `
+          <div class="product-image">${product.icon}</div>
+          <div class="product-info">
+            <h3 class="product-title">${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">¥${product.price}</div>
+            <div class="view-details">点击查看详情</div>
+          </div>
+        `;
+        productsGrid.appendChild(productCard);
+      });
+    }
+    
+    // 打开商品详情模态框
+    function openProductDetail(productId) {
+      const product = products.find(p => p.id === productId);
+      const modal = document.getElementById('product-modal');
+      const modalContent = document.getElementById('modal-content');
+      
+      modalContent.innerHTML = `
+        <div class="modal-header">
+          <h2>${product.name}</h2>
+          <button class="close-button" onclick="closeProductDetail()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image">${product.icon}</div>
+          <div class="modal-info">
+            <p class="modal-description">${product.description}</p>
+            <p class="modal-price">¥${product.price}</p>
+          </div>
+        </div>
+      `;
+      
+      modal.style.display = 'flex';
+    }
+    
+    // 关闭商品详情模态框
+    function closeProductDetail() {
+      document.getElementById('product-modal').style.display = 'none';
+    }
+    
+    // 点击模态框外部关闭
+    window.onclick = function(event) {
+      const modal = document.getElementById('product-modal');
+      if (event.target == modal) {
+        closeProductDetail();
+      }
+    }
+    
+    // 分享功能
+    function shareToWeChat() {
+      // 微信分享需要通过微信JS-SDK实现，这里只是模拟
+      alert('请在微信中打开页面，点击右上角分享按钮分享给好友');
+    }
+    
+    function shareToWeibo() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent('未来科技商城 - 探索最新科技产品');
+      const content = encodeURIComponent('探索最新科技产品，体验未来生活方式');
+      const weiboUrl = `https://service.weibo.com/share/share.php?url=${url}&title=${title}&content=${content}`;
+      window.open(weiboUrl, '_blank', 'width=600,height=400');
+    }
+    
+    function copyLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(function() {
+        alert('链接已复制到剪贴板');
+      }, function() {
+        // 降级方案，创建临时输入框
+        const input = document.createElement('input');
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        alert('链接已复制到剪贴板');
+      });
+    }
+
+    // 初始化
+    window.onload = function() {
+      createParticles();
+      renderProducts();
+    };
+  </script>
+</body>
+</html>
